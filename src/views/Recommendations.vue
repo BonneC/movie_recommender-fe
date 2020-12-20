@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>rekomend</h2>
+<!--    <h2>rekomend</h2>-->
     <canvas>
 
     </canvas>
@@ -12,8 +12,8 @@ export default {
   name: "Recommendations",
   data() {
     return {
-      canvas: document.querySelector('canvas'),
-      ctx: this.canvas.getContext('2d'),
+      canvas: '',
+      ctx: '',
       letters: 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQR' +
           'STUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRS' +
           'TUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ',
@@ -23,21 +23,36 @@ export default {
     }
   },
   created(){
+    // this.canvas = document.querySelector('canvas')
+    // this.ctx = this.canvas.getContext('2d')
+    // this.canvas.width = window.innerWidth
+    // this.canvas.height = window.innerHeight
+    // this.columns = this.canvas.width / this.fontSize
+    // for (let i = 0; i < this.columns; i++) {
+    //   this.drops[i] = 1
+    // }
+    // setInterval(this.draw, 33);
+    // this.draw()
+  },
+  mounted(){
+    this.canvas = document.querySelector('canvas')
+    this.ctx = this.canvas.getContext('2d')
     this.canvas.width = window.innerWidth
     this.canvas.height = window.innerHeight
-    this.columns = this.canvas.width / this.fontSize;
-    for (let i = 0; i < this.columns; i++) {
-      this.drops[i] = 1;
-    }
-    setInterval(this.draw, 33);
+    this.columns = this.canvas.width / this.fontSize
+    this.letters = this.letters.split('')
+    for (let i = 0; i < this.columns; i++)
+      this.drops[i] = 1
+
+    setInterval(this.draw, 33)
+    // this.draw()
   },
-  computed(){
+  computed:{
 
   },
   methods: {
     draw() {
-      this.letters = this.letters.split('');
-      this.ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+      this.ctx.fillStyle = 'rgba(0, 0, 0, .1)'
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
       for (let i = 0; i < this.drops.length; i++) {
         let text = this.letters[Math.floor(Math.random() * this.letters.length)]

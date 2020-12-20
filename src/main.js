@@ -7,12 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Axios from 'axios'
 // import './assets/css/style.scss'
 import store from './store'
+import router from "./router";
 import MoviesList from "./components/MoviesList";
 
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem('token')
 if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+    Vue.prototype.$http.defaults.headers.common['Authorization'] = token
 }
 
 Vue.use(BootstrapVue)
@@ -23,6 +24,7 @@ Vue.config.productionTip = false
 Vue.component('movies-list', MoviesList)
 
 new Vue({
-  render: h => h(App),
-  store
+    render: h => h(App),
+    router,
+    store
 }).$mount('#app')

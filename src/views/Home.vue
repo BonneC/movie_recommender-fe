@@ -2,7 +2,7 @@
   <div>
     <h2>NESH</h2>
     <router-link class="nav-link" :to="{name: 'movies'}">Movies</router-link>
-<!--    <router-link class="nav-link" :to="{name: 'recommend'}">Recommend</router-link>-->
+    <router-link class="nav-link" :to="{name: 'recommend'}">Recommend</router-link>
     <div>
       <router-view/>
     </div>
