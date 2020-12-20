@@ -1,26 +1,25 @@
 <template>
   <div id="app">
-    <h2>dis</h2>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <!--    <Home v-if="isLoggedIn"></Home>-->
-    <!--    <Login v-if="!isLoggedIn"></Login>-->
-    <Home></Home>
+        <Home v-if="isLoggedIn"></Home>
+        <Login v-if="!isLoggedIn"></Login>
   </div>
 </template>
 
 <script>
-import Home from "@/views/Home";
-// import Login from "@/views/Login";
+import Home from "./views/Home";
+import Login from "./views/Login";
 
 export default {
   name: 'App',
   components: {
-    // Login,
+    Login,
     Home,
 
   },
   computed: {
     isLoggedIn: function () {
+      console.log('tokenne')
+      console.log(this.$store.getters.isLoggedIn)
       return this.$store.getters.isLoggedIn
     }
   },
@@ -44,7 +43,8 @@ export default {
         }
         throw err;
       });
-    });
+    })
+
   }
 }
 </script>

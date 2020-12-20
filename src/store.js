@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-
+import UserService from "./services/UserService";
 
 Vue.use(Vuex)
 
@@ -31,10 +31,11 @@ export default new Vuex.Store({
         },
     },
     actions: {
-        login({commit}, user){
+        login({commit}, formData){
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios({url: 'http://localhost:8000/token', data: user, method: 'POST' })
+                UserService.login(formData)
+                // axios({url: 'http://localhost:8000/login', data: formData, method: 'POST' })
                     .then(resp => {
                         const token = resp.data.token
                         const user = resp.data.user
@@ -63,8 +64,8 @@ export default new Vuex.Store({
 
     },
     getters : {
-        // isLoggedIn: state => !!state.token,
-        isLoggedIn: true,
+        isLoggedIn: state => !!state.token,
+        // isLoggedIn: true,
         authStatus: state => state.status,
     }
 })

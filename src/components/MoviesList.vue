@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import MovieService from "@/services/MovieService";
+    import MovieService from "../services/MovieService";
 
     export default {
         name: "MoviesList",

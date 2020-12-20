@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from "@/views/Home";
-import Login from "@/views/Login";
-import store from "@/store";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import store from "./store";
+import Recommendations from "./views/Recommendations";
+import Movies from "./views/Movies";
 
 Vue.use(VueRouter)
 
@@ -13,7 +15,7 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-            // requiresAuth: true
+            requiresAuth: true
         }
     },
     {
@@ -21,6 +23,22 @@ const routes = [
         name: 'login',
         component: Login
     },
+    {
+        path: '/recommend',
+        name: 'recommend',
+        component: Recommendations,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/movies',
+        name: 'movies',
+        component: Movies,
+        meta: {
+            requiresAuth: true
+        }
+    }
 ]
 
 const router = new VueRouter({
