@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h2>NESH</h2>
-    <router-link class="nav-link" :to="{name: 'movies'}">Movies</router-link>
-    <router-link class="nav-link" :to="{name: 'recommend'}">Recommend</router-link>
+  <div id="nav">
+    <router-link  :to="{name: 'movies'}">Movies</router-link>
+    <span> | </span>
+    <router-link  :to="{name: 'recommend'}">Recommend</router-link>
     <div>
       <router-view/>
     </div>
@@ -16,23 +16,24 @@ import router from '../router'
 export default {
   name: "Home",
 
-  data(){
-    return{
-
-    }
+  data() {
+    return {}
   },
   created() {
     console.log(router.currentRoute)
   },
-  methods:{
-    // recommend: function (event){
-    //   console.log(event)
-    //   router.push({name: 'recommend'}).catch(()=>{})
-    // }
+  methods: {
+    recommend: function (event) {
+      console.log(event)
+      router.push({name: 'recommend'}).catch(() => {
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
-
+#nav{
+  overflow: hidden;
+}
 </style>

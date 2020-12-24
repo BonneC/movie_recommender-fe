@@ -7,8 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Axios from 'axios'
 // import './assets/css/style.scss'
 import store from './store'
-import router from "./router";
-import MoviesList from "./components/MoviesList";
+import router from "./router"
+import MoviesList from "./components/MoviesList"
+import './assets/css/style.scss'
 
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem('token')
