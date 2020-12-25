@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
-    <router-link  :to="{name: 'movies'}">Movies</router-link>
+    <router-link  :to="{name: 'movies'}">MOVIES</router-link>
     <span> | </span>
-    <router-link  :to="{name: 'recommend'}">Recommend</router-link>
+    <router-link  :to="{name: 'recommend'}">RECOMMEND</router-link>
 
     <div>
       <router-view/>

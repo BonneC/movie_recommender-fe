@@ -2,9 +2,9 @@
     <div>
       <h2>R WE HERE</h2>
       <div>
-        <ul>
+        <ul id="ratings">
             <li v-for="movie in movies" :key="movie.id">
-                {{movie.id}} : {{movie.rating}}
+              title : {{movie.rating}}
             </li>
         </ul>
       </div>
@@ -48,5 +48,7 @@
 </script>
 
 <style scoped>
-
+#ratings{
+  font-family: 'Space Mono', monospace;
+}
 </style>

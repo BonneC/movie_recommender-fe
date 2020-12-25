@@ -2,7 +2,7 @@
   <div id="app">
         <Home v-if="isLoggedIn"></Home>
         <Login v-if="!isLoggedIn"></Login>
-    <button @click="logout">Logout</button>
+    <button @click="logout">LOGOUT</button>
   </div>
 </template>
 
