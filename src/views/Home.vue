@@ -3,6 +3,7 @@
     <router-link  :to="{name: 'movies'}">Movies</router-link>
     <span> | </span>
     <router-link  :to="{name: 'recommend'}">Recommend</router-link>
+
     <div>
       <router-view/>
     </div>

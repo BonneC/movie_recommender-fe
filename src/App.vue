@@ -2,6 +2,7 @@
   <div id="app">
         <Home v-if="isLoggedIn"></Home>
         <Login v-if="!isLoggedIn"></Login>
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
@@ -18,8 +19,8 @@ export default {
   },
   computed: {
     isLoggedIn: function () {
-      console.log('tokenne')
-      console.log(this.$store.getters.isLoggedIn)
+      // console.log('tokenne')
+      // console.log(this.$store.getters.isLoggedIn)
       return this.$store.getters.isLoggedIn
     }
   },

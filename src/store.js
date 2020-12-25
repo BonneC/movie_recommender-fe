@@ -37,8 +37,8 @@ export default new Vuex.Store({
                 UserService.login(formData)
                 // axios({url: 'http://localhost:8000/login', data: formData, method: 'POST' })
                     .then(resp => {
-                        const token = resp.data.token
-                        const user = resp.data.user
+                        const token = resp.data.access_token
+                        const user = formData.username
                         localStorage.setItem('token', token)
                         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
                         commit('auth_success', token, user)

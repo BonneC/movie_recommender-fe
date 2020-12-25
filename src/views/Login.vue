@@ -28,10 +28,6 @@ export default {
   },
   methods: {
     login: function () {
-      // let username = this.userData.username
-      // let password = this.userData.password
-      // console.log(username)
-      // console.log(password)
       const formData = new FormData();
       formData.append('grant_type', 'password')
       formData.append('username', this.userData.username)
