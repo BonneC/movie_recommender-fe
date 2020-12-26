@@ -19,8 +19,6 @@ export default {
   },
   computed: {
     isLoggedIn: function () {
-      // console.log('tokenne')
-      // console.log(this.$store.getters.isLoggedIn)
       return this.$store.getters.isLoggedIn
     }
   },
