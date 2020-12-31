@@ -70,6 +70,6 @@ export default {
 ul{
   display: inline-block;
   /*vertical-align: middle;*/
-  list-style: none;
+  /*list-style: none;*/
 }
 </style>

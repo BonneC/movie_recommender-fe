@@ -15,7 +15,7 @@
         <div class="row justify-content-center align-self-center">
           <ul class="list">
             <li v-for="movie in movies" :key="movie.id" class="shuffle is-main">
-              {{ movie.id }} : {{ movie.name }}
+              {{ movie.id }} : {{ movie.title.toUpperCase() }}
             </li>
           </ul>
         </div>
@@ -29,6 +29,7 @@
 
 <script>
 import anime from "animejs"
+import MovieService from "../services/MovieService";
 
 export default {
 
@@ -45,10 +46,10 @@ export default {
       drops: [],
       interval: 0,
       movies: [
-        {'id': 1, 'name': 'GODFATHER'},
-        {'id': 2, 'name': 'MATRIX'},
-        {'id': 3, 'name': 'TAXI DRIVER'},
-        {'id': 4, 'name': 'TESTIN'},
+        {'id': 1, 'title': 'GODFATHER'},
+        {'id': 2, 'title': 'MATRIX'},
+        {'id': 3, 'title': 'TAXI DRIVER'},
+        {'id': 4, 'title': 'TESTIN'},
       ]
     }
   },
@@ -59,14 +60,29 @@ export default {
     window.removeEventListener("resize", this.myEventHandler);
   },
   mounted() {
+    this.getRecommendations()
     this.letters = this.letters.split('')
     this.set()
     this.interval = setInterval(this.draw, 33)
-    this.WordShuffler()
+    // this.WordShuffler()
     // this.draw()
   },
   computed: {},
   methods: {
+    getRecommendations() {
+      MovieService.getRecommendations()
+          .then(response => {
+            console.log(response.data)
+            this.movies = response.data
+            this.WordShuffler()
+            // for (let movie in this.movies)
+            //   console.log(movie)
+
+          })
+          .catch(error => {
+            console.log('error ' + error)
+          })
+    },
     myEventHandler(e) {
       console.log(e)
       this.set()
@@ -188,9 +204,9 @@ export default {
   position: absolute;
 }
 
-.list {
-  color: #0f0;
-}
+/*.list {*/
+/*  color: #0f0;*/
+/*}*/
 
 canvas {
   border: 1px solid black;
@@ -221,7 +237,7 @@ p {
 }
 
 .shuffle.is-main {
-  font-size: 200%;
+  /*font-size: 200%;*/
 }
 
 .shuffle.completed {
