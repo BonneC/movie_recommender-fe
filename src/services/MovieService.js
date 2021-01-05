@@ -1,21 +1,24 @@
 import axios from 'axios'
+import {authHeader} from "../helpers/auth-header";
+
+
 
 const apiClient = axios.create({
     baseURL: 'http://localhost:8000',
     withCredentials: false,
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-    }
+    // headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + store.state.token
+    // }
 })
 
 export default {
     getMovies() {
-        return apiClient.get('/movies')
+        return apiClient.get('/movies', { headers: authHeader()})
     },
     getRecommendations() {
-        return apiClient.get('/movies/recommended/')
+        return apiClient.get('/movies/recommended/', {headers: authHeader()})
     },
     getMovie(id) {
         return apiClient.get('/movie/' + id)
@@ -26,9 +29,7 @@ export default {
                 params: {
                     name: movieInfo.rating
                 },
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                headers: authHeader()
             })
     },
     putMovie(movieInfo) {
@@ -37,9 +38,7 @@ export default {
                 params: {
                     rating: movieInfo.rating
                 },
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                headers: authHeader()
             })
     },
 }

@@ -46,10 +46,10 @@ export default {
       drops: [],
       interval: 0,
       movies: [
-        {'id': 1, 'title': 'GODFATHER'},
-        {'id': 2, 'title': 'MATRIX'},
-        {'id': 3, 'title': 'TAXI DRIVER'},
-        {'id': 4, 'title': 'TESTIN'},
+        // {'id': 1, 'title': 'GODFATHER'},
+        // {'id': 2, 'title': 'MATRIX'},
+        // {'id': 3, 'title': 'TAXI DRIVER'},
+        // {'id': 4, 'title': 'TESTIN'},
       ]
     }
   },

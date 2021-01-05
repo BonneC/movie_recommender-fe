@@ -4,18 +4,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Axios from 'axios'
+// import axios from 'axios'
 // import './assets/css/style.scss'
+import MovieService from "./services/MovieService";
 import store from './store'
 import router from "./router"
 import MoviesList from "./components/MoviesList"
 import './assets/css/style.scss'
 
-Vue.prototype.$http = Axios;
-const token = localStorage.getItem('token')
-if (token) {
-    Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token
-}
+// Vue.prototype.$http = Axios;
+// const token = localStorage.getItem('token')
+// if (token) {
+//     Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token
+// }
+MovieService.apiClient
 
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
