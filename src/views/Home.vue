@@ -1,12 +1,12 @@
 <template>
   <div id="nav">
-    <router-link  :to="{name: 'movies'}">MOVIES</router-link>
+    <router-link :to="{name: 'movies'}">MOVIES</router-link>
     <span> | </span>
-    <router-link  :to="{name: 'recommend'}">RECOMMEND</router-link>
-
+    <router-link :to="{name: 'recommend'}">RECOMMEND</router-link>
     <div>
       <router-view/>
     </div>
+    <button @click="logout">LOGOUT</button>
   </div>
 </template>
 
@@ -24,17 +24,18 @@ export default {
     console.log(router.currentRoute)
   },
   methods: {
-    recommend: function (event) {
-      console.log(event)
-      router.push({name: 'recommend'}).catch(() => {
-      })
+    logout: function () {
+      this.$store.dispatch('logout')
+          .then(() => {
+            this.$router.push('/login')
+          })
     }
   }
 }
 </script>
 
 <style scoped>
-#nav{
+#nav {
   overflow: hidden;
 }
 </style>

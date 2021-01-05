@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     getMovies() {
+      console.log(this.$store.state.token)
       MovieService.getMovies()
           .then(response => {
             // console.log(response.data)

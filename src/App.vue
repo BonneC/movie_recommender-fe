@@ -1,21 +1,13 @@
 <template>
   <div id="app">
-        <Home v-if="isLoggedIn"></Home>
-        <Login v-if="!isLoggedIn"></Login>
-    <button @click="logout">LOGOUT</button>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Home from "./views/Home";
-import Login from "./views/Login";
-
 export default {
   name: 'App',
   components: {
-    Login,
-    Home,
-
   },
   computed: {
     isLoggedIn: function () {
@@ -26,11 +18,9 @@ export default {
 
   },
   methods: {
-    logout: function () {
-      this.$store.dispatch('logout')
-          .then(() => {
-            this.$router.push('/login')
-          })
+    reload() {
+      console.log(this.$store.state.token)
+      this.$forceUpdate()
     }
   },
   created: function () {

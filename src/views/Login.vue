@@ -33,7 +33,10 @@ export default {
       formData.append('username', this.userData.username)
       formData.append('password', this.userData.password)
       this.$store.dispatch('login', formData)
-          .then(() => this.$router.push('/'))
+          .then(() => {
+            // this.$emit('logged')
+            this.$router.push('/')
+          })
           .catch(err => console.log(err))
     }
   }
