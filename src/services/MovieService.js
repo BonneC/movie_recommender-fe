@@ -21,7 +21,7 @@ export default {
         return apiClient.get('/movies/recommended/', {headers: authHeader()})
     },
     getMovie(id) {
-        return apiClient.get('/movie/' + id)
+        return apiClient.get('/movie/' + id, {headers: authHeader()})
     },
     postMovie(movieInfo) {
         return apiClient.post('/movies/'+ movieInfo.id, {}

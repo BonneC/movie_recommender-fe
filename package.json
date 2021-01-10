@@ -15,6 +15,7 @@
     "css": "^3.0.0",
     "css-loader": "^5.0.1",
     "jquery": "^3.5.1",
+    "modal": "^1.2.0",
     "popper.js": "^1.16.1",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
@@ -30,6 +31,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
+    "vue-js-modal": "^2.0.0-rc.6",
     "vue-router": "^3.4.5",
     "vue-template-compiler": "^2.6.12",
     "vuex": "^3.5.1"

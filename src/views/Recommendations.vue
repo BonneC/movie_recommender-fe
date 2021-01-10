@@ -6,7 +6,7 @@
   <!--        <p><span class="shuffle">(Click to replay)</span></p>-->
   <!--      </div>-->
   <!--    </div>-->
-  <div id="container">
+  <div id="main">
     <canvas>
 
     </canvas>
@@ -14,12 +14,13 @@
       <div class="container d-inline-flex justify-content-center h-100">
         <div class="row justify-content-center align-self-center">
           <ul class="list">
-            <li v-for="movie in movies" :key="movie.id" class="shuffle is-main">
+            <li v-for="movie in movies" :key="movie.id"  class="shuffle is-main">
               {{ movie.id }} : {{ movie.title.toUpperCase() }}
             </li>
           </ul>
         </div>
       </div>
+      <router-link :to="{name: 'home'}">BACK</router-link>
     </div>
   </div>
   <!--    <span style="display: inline-block" class="shuffle is-main">Punkywhitenoisething</span>-->
@@ -64,8 +65,6 @@ export default {
     this.letters = this.letters.split('')
     this.set()
     this.interval = setInterval(this.draw, 33)
-    // this.WordShuffler()
-    // this.draw()
   },
   computed: {},
   methods: {
@@ -191,7 +190,7 @@ export default {
 #container {
   /*margin-top: -10%;*/
   width: 100vw;
-  height: calc(100vh - 84px);
+  /*height: calc(100vh - 84px);*/
   overflow: hidden;
   position: relative;
   /*display: inline-block;*/

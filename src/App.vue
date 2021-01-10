@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container-fluid">
     <router-view></router-view>
   </div>
 </template>
@@ -43,6 +43,7 @@ export default {
   color: #2c3e50;
   background: black;
   overflow: hidden;
+  height: calc(100vh);
   /*margin-top: 60px;*/
 }
 </style>
