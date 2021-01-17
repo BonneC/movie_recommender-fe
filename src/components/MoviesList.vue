@@ -3,7 +3,7 @@
     <h2>YOUR MOVIES</h2>
     <div>
       <ul id="ratings">
-        <li v-for="movie in user_movies" :key="movie.id" :movie="movie" @click="showEdit(movie)" >
+        <li v-for="movie in user_movies" :key="movie.movie_id" :movie="movie" @click="showEdit(movie)">
           {{ movie.title }} {{ movie.rating }}
         </li>
       </ul>
@@ -16,11 +16,12 @@
               <label for="title">MOVIE</label> <input id="title" type="text" disabled="disabled" v-model="title">
               <label for="rating">RATING</label>
               <input type="text" v-model="rating" id="rating">
-<!--              <button type="button" class="btn btn-primary" @click="onChange">Change Rating</button>-->
+
             </div>
           </div>
-          <div class="partition" >
-<!--          <button type="button" class="btn btn-primary" @click="hide('delete-modal')">Cancel</button>-->
+          <div class="partition">
+            <button type="button" class="btn btn-primary" @click="onSubmit">CHANGE RATING</button>
+            <button type="button" class="btn btn-primary" @click="onDelete()">DELETE RATING</button>
           </div>
         </div>
       </modal>
@@ -42,7 +43,7 @@ export default {
       movies_details: [],
       modalWidth: MODAL_WIDTH,
       title: '',
-      id: '',
+      movie_id: '',
       rating: '55',
       disabled: true,
     }
@@ -51,25 +52,47 @@ export default {
     await this.getMovies()
   },
   methods: {
-    showEdit(movie){
-      console.log(movie.id)
+    showEdit(movie) {
+      // console.log(movie.id)
       this.$modal.show('edit-modal', {
         title: movie.title,
         rating: movie.rating,
-        id: movie.id
+        movie_id: movie.movie_id
       })
     },
     beforeOpen(event) {
       // this.disabled = true
-      console.log('HENLO')
-      console.log(event.params)
+      // console.log('HENLO')
+      // console.log(event.params)
       this.setInfo(event.params)
-      console.log(event.params);
+      // console.log(event.params);
     },
     setInfo(movie) {
       this.title = movie.title
       this.rating = movie.rating
-      this.id = movie.id
+      this.movie_id = movie.movie_id
+    },
+    onSubmit() {
+      console.log('SUBMITTEN')
+      console.log(this.movie_id)
+      console.log(this.rating)
+      let movieInfo = {
+        'id': this.movie_id,
+        'rating': this.rating
+      }
+      MovieService.putMovie(movieInfo)
+          .then(response => {
+            console.log(response.data)
+            this.$modal.hide('edit-modal')
+            this.getMovies()
+          })
+    },
+    onDelete() {
+      MovieService.deleteMovie(this.movie_id).then(response => {
+        console.log(response.data)
+        this.getMovies()
+        this.$modal.hide('edit-modal')
+      })
     },
     getMovies() {
       console.log(this.$store.state.token)
@@ -84,7 +107,7 @@ export default {
           .catch(error => {
             console.log('error' + error.response)
             // console.log(error.response.status)
-            if(error.response.status === 401)
+            if (error.response.status === 401)
               this.$store.dispatch('logout')
                   .then(() => {
                     this.$router.push('/login')
@@ -107,7 +130,7 @@ export default {
             })
             .catch(error => {
               console.log('error ' + error.response)
-              if(error.response.status === 401)
+              if (error.response.status === 401)
                 this.$store.dispatch('logout')
                     .then(() => {
                       this.$router.push('/login')
@@ -123,7 +146,8 @@ export default {
 #ratings {
   /*font-family: 'Space Mono', monospace;*/
 }
-ul{
+
+ul {
   display: inline-block;
   /*vertical-align: middle;*/
   /*list-style: none;*/
