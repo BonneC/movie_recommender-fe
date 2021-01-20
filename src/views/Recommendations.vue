@@ -55,13 +55,14 @@ export default {
     }
   },
   created() {
-    window.addEventListener("resize", this.myEventHandler);
+    window.addEventListener("resize", this.myEventHandler)
+    this.getRecommendations()
   },
   destroyed() {
-    window.removeEventListener("resize", this.myEventHandler);
+    window.removeEventListener("resize", this.myEventHandler)
   },
   mounted() {
-    this.getRecommendations()
+
     this.letters = this.letters.split('')
     this.set()
     this.interval = setInterval(this.draw, 33)

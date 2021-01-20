@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="nav">
-      <router-link :to="{name: 'recommend'}">RECOMMEND</router-link>
+      <router-link :to="{name: 'recommend'}" class="links">RECOMMEND</router-link>
       <span> | </span>
       <button @click="logout">LOGOUT</button>
     </div>
@@ -37,18 +37,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #nav {
   overflow: hidden;
 }
 
-button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-}
+
+
+
+
 </style>

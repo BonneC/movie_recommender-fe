@@ -8,7 +8,7 @@
         </li>
       </ul>
 
-      <modal name="edit-modal" @before-open="beforeOpen" :width="modalWidth" :focus-trap="true">
+      <modal  id="popup" style="background-color: black;" name="edit-modal" @before-open="beforeOpen" :width="modalWidth" :focus-trap="true">
         <div class="box ">
           <div class="partition" id="partition-register">
             <div class="partition-title">EDIT RATING</div>
@@ -20,8 +20,8 @@
             </div>
           </div>
           <div class="partition">
-            <button type="button" class="btn btn-primary" @click="onSubmit">CHANGE RATING</button>
-            <button type="button" class="btn btn-primary" @click="onDelete()">DELETE RATING</button>
+            <button type="button"  @click="onSubmit">CHANGE RATING</button>
+            <button type="button"  @click="onDelete()">DELETE RATING</button>
           </div>
         </div>
       </modal>
@@ -142,14 +142,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #ratings {
   /*font-family: 'Space Mono', monospace;*/
 }
 
 ul {
   display: inline-block;
+  padding-left: 0px;
   /*vertical-align: middle;*/
   /*list-style: none;*/
+}
+
+li {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#popup{
+  background-color: black !important;
 }
 </style>
