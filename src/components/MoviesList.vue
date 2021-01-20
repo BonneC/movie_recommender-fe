@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="movie_comp">
     <h2>YOUR MOVIES</h2>
     <div>
       <ul id="ratings">
@@ -7,8 +7,8 @@
           {{ movie.title }} {{ movie.rating }}
         </li>
       </ul>
-
-      <modal  id="popup" style="background-color: black;" name="edit-modal" @before-open="beforeOpen" :width="modalWidth" :focus-trap="true">
+      <modal id="popup" style="background-color: black;" name="edit-modal" @before-open="beforeOpen" :width="modalWidth"
+             :focus-trap="true">
         <div class="box ">
           <div class="partition" id="partition-register">
             <div class="partition-title">EDIT RATING</div>
@@ -16,16 +16,14 @@
               <label for="title">MOVIE</label> <input id="title" type="text" disabled="disabled" v-model="title">
               <label for="rating">RATING</label>
               <input type="text" v-model="rating" id="rating">
-
             </div>
           </div>
           <div class="partition">
-            <button type="button"  @click="onSubmit">CHANGE RATING</button>
-            <button type="button"  @click="onDelete()">DELETE RATING</button>
+            <button type="button" @click="onSubmit">CHANGE RATING</button>
+            <button type="button" @click="onDelete()">DELETE RATING</button>
           </div>
         </div>
       </modal>
-
     </div>
   </div>
 </template>
@@ -147,9 +145,15 @@ export default {
   /*font-family: 'Space Mono', monospace;*/
 }
 
+#movie_comp {
+  padding-top: 60px;
+}
+
 ul {
   display: inline-block;
-  padding-left: 0px;
+  padding-left: 0;
+  font-size: 13px;
+  padding-top: 20px;
   /*vertical-align: middle;*/
   /*list-style: none;*/
 }
@@ -160,7 +164,7 @@ li {
   }
 }
 
-#popup{
+#popup {
   background-color: black !important;
 }
 </style>

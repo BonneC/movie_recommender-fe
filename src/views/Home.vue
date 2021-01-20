@@ -1,14 +1,17 @@
 <template>
   <div>
-    <div id="nav">
-      <router-link :to="{name: 'recommend'}" class="links">RECOMMEND</router-link>
-      <span> | </span>
-      <button @click="logout">LOGOUT</button>
+    <div id="nav" class="d-flex justify-content-end">
+      <div>
+        <router-link :to="{name: 'recommend'}" class="links">NEW</router-link>
+        <span> | </span>
+        <router-link :to="{name: 'recommend'}" class="links">RECOMMEND</router-link>
+        <span> | </span>
+        <button @click="logout">LOGOUT</button>
+      </div>
     </div>
     <div class="container-fluid">
       <MoviesList></MoviesList>
     </div>
-
   </div>
 </template>
 
@@ -41,9 +44,4 @@ export default {
 #nav {
   overflow: hidden;
 }
-
-
-
-
-
 </style>

@@ -1,24 +1,26 @@
 <template>
-  <div class="container-fluid">
-
-    <form class="login" @submit.prevent="login">
-      <div class="row justify-content-center m-5">
-        <div class="col-8">
-          <label>USERNAME<span class="colon">:</span>
-            <input required v-model="userData.username" placeholder="name"/>
-          </label>
-        </div>
-        <div class="col">
-          <label>PASS<span class="colon">:</span>
-            <input required v-model="userData.password" type="password" placeholder="pass"/>
-          </label>
-        </div>
+  <div>
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="w-50">
+        <form class="login" @submit.prevent="login">
+          <div class="row justify-content-center m-5">
+            <div class="col p-0">
+              <label>USERNAME<span class="colon">:</span>
+                <input required v-model="userData.username" placeholder="name"/>
+              </label>
+            </div>
+            <div class="col p-0">
+              <label>PASS<span class="colon">:</span>
+                <input required v-model="userData.password" type="password" placeholder="pass"/>
+              </label>
+            </div>
+            <div class="col-1">
+              <button type="submit">LOGIN</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="row justify-content-center m-5">
-        <button type="submit">LOGIN</button>
-      </div>
-    </form>
-
+    </div>
   </div>
 </template>
 
@@ -64,6 +66,7 @@ export default {
 input {
   background: none;
   border: none;
+  width: 50%;
 
   &:focus {
     outline: none;

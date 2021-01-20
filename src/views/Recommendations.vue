@@ -1,31 +1,23 @@
 <template>
-  <!--  <div id="recc">-->
-  <!--    <div class="fullheight">-->
-  <!--      <div class="fullheight-body">-->
-  <!--        <p><span class="shuffle is-main">Punkywhitenoisething</span></p>-->
-  <!--        <p><span class="shuffle">(Click to replay)</span></p>-->
-  <!--      </div>-->
-  <!--    </div>-->
   <div id="main">
     <canvas>
 
     </canvas>
+    <div id="back" class="d-flex justify-content-end">
+      <router-link :to="{name: 'home'}">BACK</router-link>
+    </div>
     <div id="overlay">
       <div class="container d-inline-flex justify-content-center h-100">
         <div class="row justify-content-center align-self-center">
           <ul class="list">
-            <li v-for="movie in movies" :key="movie.id"  class="shuffle is-main">
+            <li v-for="movie in movies" :key="movie.id" class="shuffle is-main">
               {{ movie.id }} : {{ movie.title.toUpperCase() }}
             </li>
           </ul>
         </div>
       </div>
-      <router-link :to="{name: 'home'}">BACK</router-link>
     </div>
   </div>
-  <!--    <span style="display: inline-block" class="shuffle is-main">Punkywhitenoisething</span>-->
-
-  <!--  </div>-->
 </template>
 
 <script>
@@ -172,11 +164,6 @@ export default {
 </script>
 
 <style scoped>
-/** {*/
-/*  margin: 0;*/
-/*  padding: 0*/
-/*}*/
-
 #recc {
   background: #111;
   color: #ccc;
@@ -204,9 +191,9 @@ export default {
   position: absolute;
 }
 
-/*.list {*/
-/*  color: #0f0;*/
-/*}*/
+#back {
+  position: relative;
+}
 
 canvas {
   border: 1px solid black;
