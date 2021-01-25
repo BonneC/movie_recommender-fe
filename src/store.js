@@ -6,7 +6,6 @@ import UserService from "./services/UserService";
 Vue.use(Vuex)
 
 
-
 export default new Vuex.Store({
     state: {
         status: '',

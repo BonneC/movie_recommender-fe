@@ -43,4 +43,9 @@ button {
   &:hover {
     text-decoration: underline;
   }
+  &:disabled{
+    text-decoration: line-through;
+    color: grey;
+
+  }
 }

@@ -42,5 +42,8 @@ export default {
     },
     deleteMovie(id) {
         return apiClient.delete('/movies/' + id, {headers: authHeader()})
+    },
+    searchMovies(keyword) {
+        return apiClient.get('/movies/search/' + keyword, {headers: authHeader()})
     }
 }

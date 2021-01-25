@@ -38,5 +38,9 @@ button {
 button:hover {
   text-decoration: underline;
 }
+button:disabled {
+  text-decoration: line-through;
+  color: grey;
+}
 
 /*# sourceMappingURL=style.css.map */

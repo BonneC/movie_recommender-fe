@@ -59,9 +59,6 @@ export default {
       })
     },
     beforeOpen(event) {
-      // this.disabled = true
-      // console.log('HENLO')
-      // console.log(event.params)
       this.setInfo(event.params)
       // console.log(event.params);
     },
