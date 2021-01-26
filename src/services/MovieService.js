@@ -26,7 +26,7 @@ export default {
         return apiClient.post('/movies/' + movieInfo.id, {}
             , {
                 params: {
-                    name: movieInfo.rating
+                    rating: movieInfo.rating
                 },
                 headers: authHeader()
             })

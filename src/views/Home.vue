@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="container-fluid">
-      <MoviesList></MoviesList>
+      <MoviesList ref="child"></MoviesList>
     </div>
     <modal id="popup" style="background-color: black;" name="add-modal" :width="modalWidth"
            :focus-trap="true" @before-close="beforeClose">
@@ -28,8 +28,8 @@
                       :maxItem="10"
             >
             </Dropdown>
-                        <label for="rating">RATING</label>
-                        <input type="text" v-model="rating" id="rating">
+            <label for="rating">RATING</label>
+            <input type="text" v-model="rating" id="rating">
           </div>
         </div>
         <div class="partition">
@@ -56,12 +56,19 @@ export default {
       keyword: '',
       options: [],
       movie_id: null,
-      rating: '',
+      rating: null,
       selected: {name: null, id: null},
       disabled: true
     }
   },
-  watch: {},
+  watch: {
+    movie_id: function () {
+      this.validateValues()
+    },
+    rating: function () {
+      this.validateValues()
+    }
+  },
   created() {
     console.log(router.currentRoute)
   },
@@ -97,11 +104,27 @@ export default {
       console.log(event.params)
       this.options = []
       this.id = null
+      this.rating = null
       this.selected = {name: null, id: null}
     },
     validateSelection(selection) {
       this.selected = selection
+      this.movie_id = selection.id
       console.log(selection.name + ' has been selected');
+    },
+    validateValues() {
+      console.log('MOVIE ID')
+      console.log(this.movie_id)
+      console.log('RATING')
+      console.log(this.rating)
+      if (!this.movie_id) {
+        this.disabled = true
+      } else if (!this.rating || (this.rating > 5 || this.rating <= 0) ||
+          (this.rating % 1 !== 0.5 && this.rating % 1 !== 0.0)) {
+        this.disabled = true
+      } else {
+        this.disabled = false
+      }
     },
     getDropdownValues(keyword) {
       console.log('You could refresh options by querying the API with ' + keyword)
@@ -120,6 +143,16 @@ export default {
     },
     onSubmit() {
       console.log('SUBMITTEN')
+      let movieInfo = {
+        'id': this.movie_id,
+        'rating': this.rating
+      }
+      MovieService.postMovie(movieInfo)
+          .then(response => {
+            console.log(response.data)
+            this.$modal.hide('add-modal')
+            this.$refs.child.getMovies()
+          })
     }
   }
 }
