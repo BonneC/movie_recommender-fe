@@ -26,9 +26,10 @@
                       v-on:filter="getDropdownValues"
                       :disabled="false"
                       :maxItem="10"
+
             >
             </Dropdown>
-            <label for="rating">RATING</label>
+            <p style="z-index: -1">RATING</p>
             <input type="text" v-model="rating" id="rating">
           </div>
         </div>

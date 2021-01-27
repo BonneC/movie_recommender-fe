@@ -142,17 +142,18 @@ export default {
 
 <style lang="scss" scoped>
 .dropdown {
-  position: relative;
-  display: block;
+  position: inherit;
+  //display: block;
   margin: auto;
 
   .dropdown-input {
+    //position: inherit;
     background: #fff;
     cursor: pointer;
     border: 1px solid #e7ecf5;
     border-radius: 3px;
     color: #333;
-    display: block;
+    //display: block;
     font-size: .8em;
     padding: 6px;
     min-width: 250px;
@@ -164,15 +165,16 @@ export default {
   }
 
   .dropdown-content {
-    position: absolute;
+    //position: relative;
     background-color: #fff;
+    margin-left: 205px;
     min-width: 248px;
     max-width: 248px;
-    max-height: 248px;
+    //max-height: 248px;
     border: 1px solid #e7ecf5;
     box-shadow: 0px -8px 34px 0px rgba(0, 0, 0, 0.05);
     overflow: auto;
-    z-index: 1;
+    z-index: 1000;
 
     .dropdown-item {
       color: black;
