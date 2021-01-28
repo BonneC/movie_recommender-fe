@@ -11,7 +11,7 @@
             </div>
             <div class="col p-0">
               <label>PASS<span class="colon">:</span>
-                <input required v-model="userData.password" type="password" placeholder="pass"/>
+                <input required v-model="userData.password"  type="password" placeholder="pass"/>
               </label>
             </div>
             <div class="col-1">

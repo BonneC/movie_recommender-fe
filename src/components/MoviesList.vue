@@ -46,8 +46,8 @@ export default {
       disabled: true,
     }
   },
-  async created() {
-    await this.getMovies()
+  created() {
+     this.getMovies()
   },
   methods: {
     showEdit(movie) {
@@ -94,8 +94,8 @@ export default {
       MovieService.getMovies()
           .then(response => {
             console.log(response.data)
-            this.user_movies = response.data
-            this.getTitles()
+            // this.user_movies = response.data
+            this.getTitles(response.data)
 
             // return response.data
           })
@@ -109,10 +109,10 @@ export default {
                   })
           })
     },
-    getTitles() {
-      for (let i in this.user_movies) {
-        let id = this.user_movies[i].movie_id
-        let movie = this.user_movies[i]
+    getTitles(user_movies) {
+      for (let i in user_movies) {
+        let id = user_movies[i].movie_id
+        let movie = user_movies[i]
         // console.log('I')
         // console.log(i)
         // console.log(this.user_movies[i])
@@ -121,6 +121,7 @@ export default {
               this.movies_details.push(response.data)
               // this.user_movies[i].push({key: 'title', value: response.data.title})
               movie['title'] = response.data.title.toUpperCase()
+              this.user_movies.push(movie)
               // console.log(this.user_movies)
             })
             .catch(error => {
@@ -132,6 +133,7 @@ export default {
                     })
             })
       }
+      // this.user_movies = user_movies
     }
   }
 }

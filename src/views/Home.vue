@@ -29,7 +29,8 @@
 
             >
             </Dropdown>
-            <p style="z-index: -1">RATING</p>
+            <p id="ra-title">RATING</p>
+            <p id="expl">RANGES: 1-5 , CAN END IN 0.5</p>
             <input type="text" v-model="rating" id="rating">
           </div>
         </div>
@@ -43,7 +44,7 @@
 
 <script>
 import MovieService from "../services/MovieService";
-import router from '../router'
+// import router from '../router'
 import MoviesList from "../components/MoviesList"
 import Dropdown from '../components/Dropdown'
 
@@ -71,7 +72,7 @@ export default {
     }
   },
   created() {
-    console.log(router.currentRoute)
+    // console.log(router.currentRoute)
   },
   methods: {
     logout: function () {
@@ -166,5 +167,20 @@ export default {
 
 #ddown {
   font-family: "Space Mono";
+}
+p{
+  margin-bottom: 5px;
+}
+
+#expl{
+  font-size: 12px;
+  font-family: "Space Mono";
+  color: gray;
+  //margin-bottom: 5px;
+}
+
+#ra-title{
+  padding-top: 10px;
+  margin-bottom: 0px;
 }
 </style>

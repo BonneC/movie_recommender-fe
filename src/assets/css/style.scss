@@ -31,6 +31,19 @@ a {
   }
 }
 
+input{
+  background-color: black;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: gray;
+  &:focus {
+    border-color: #0f0;
+  }
+  &:disabled{
+    color:gray;
+  }
+}
+
 button {
   background: none;
   color: inherit;
@@ -48,6 +61,9 @@ button {
     color: grey;
 
   }
+  &:focus{
+    outline: none;
+  }
 }
 
 .vm--modal.vm--modal{
@@ -55,7 +71,7 @@ button {
   box-shadow: none;
   border-style: solid;
   border-width: 1px;
-  border-color: lime;
+  border-color: #0f0;
   border-radius: 0px;
 }
 

@@ -26,6 +26,19 @@ a:active {
   text-decoration: underline;
 }
 
+input {
+  background-color: black;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: gray;
+}
+input:focus {
+  border-color: #0f0;
+}
+input:disabled {
+  color: gray;
+}
+
 button {
   background: none;
   color: inherit;
@@ -42,13 +55,16 @@ button:disabled {
   text-decoration: line-through;
   color: grey;
 }
+button:focus {
+  outline: none;
+}
 
 .vm--modal.vm--modal {
   background-color: black;
   box-shadow: none;
   border-style: solid;
   border-width: 1px;
-  border-color: lime;
+  border-color: #0f0;
   border-radius: 0px;
 }
 
