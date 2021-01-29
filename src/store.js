@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import UserService from "./services/UserService";
+import UserService from "./services/UserService"
+import MovieService from "./services/MovieService";
 
 Vue.use(Vuex)
 
@@ -10,7 +11,8 @@ export default new Vuex.Store({
     state: {
         status: '',
         token: localStorage.getItem('token'),
-        user : {}
+        user : {},
+        movies: []
     },
     mutations: {
         auth_request(state){
@@ -28,6 +30,9 @@ export default new Vuex.Store({
             state.status = ''
             state.token = ''
         },
+        rec_success(state, movies){
+            state.movies = movies
+        }
     },
     actions: {
         login({commit}, formData){
@@ -58,6 +63,19 @@ export default new Vuex.Store({
                 localStorage.removeItem('token')
                 delete axios.defaults.headers.common['Authorization']
                 resolve()
+            })
+        },
+        recommend({commit}, formData){
+            return new Promise((resolve, reject) =>{
+                MovieService.getRecommendations(formData)
+                    .then( resp => {
+                        const movies = resp.data
+                        commit('rec_success', movies)
+                        resolve(resp)
+                    })
+                    .catch( err => {
+                        reject(err)
+                    })
             })
         }
 

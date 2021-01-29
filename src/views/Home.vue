@@ -73,12 +73,19 @@ export default {
   },
   created() {
     // console.log(router.currentRoute)
+    this.recommendations()
   },
   methods: {
     logout: function () {
       this.$store.dispatch('logout')
           .then(() => {
             this.$router.push('/login')
+          })
+    },
+    recommendations(){
+      this.$store.dispatch('recommend')
+          .then(()=>{
+            console.log('sukses?')
           })
     },
     searchMovies(keyword) {

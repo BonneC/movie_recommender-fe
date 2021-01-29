@@ -46,9 +46,18 @@ export default {
       ]
     }
   },
-  created() {
+  async created() {
     window.addEventListener("resize", this.myEventHandler)
-    this.getRecommendations()
+    // this.movies  = await this.getRecommendations()
+    // this.movies = await MovieService.getRecommendations()
+    //     .then(response => {
+    //       console.log(response.data)
+    //       return response.data
+    //       // this.movies = response.data
+    //       // this.WordShuffler()
+    //     })
+    // console.log(this.movies[0])
+    this.movies = this.$store.state.movies
   },
   destroyed() {
     window.removeEventListener("resize", this.myEventHandler)
@@ -58,6 +67,8 @@ export default {
     this.letters = this.letters.split('')
     this.set()
     this.interval = setInterval(this.draw, 33)
+    console.log('cALL SHUFLER')
+    this.WordShuffler()
   },
   computed: {},
   methods: {
@@ -65,11 +76,11 @@ export default {
       MovieService.getRecommendations()
           .then(response => {
             console.log(response.data)
-            this.movies = response.data
-            this.WordShuffler()
+            // this.movies = response.data
+            // this.WordShuffler()
             // for (let movie in this.movies)
             //   console.log(movie)
-
+            return response.data
           })
           .catch(error => {
             console.log('error ' + error)
@@ -156,6 +167,8 @@ export default {
       }
 
       for (const el of document.querySelectorAll('.shuffle')) {
+        console.log('TUKI')
+        console.log(el)
         shuffle(el)
       }
     }
